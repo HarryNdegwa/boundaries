@@ -13,8 +13,15 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
+  componentDidCatch(error, errorInfo) {
+    logErrorToMyService(error, errorInfo);
+  }
+
   render() {
-    return <div></div>;
+    if (this.state.hasError === true) {
+      <p>Something went wrong!</p>;
+    }
+    return <div>Bravo! Everything is okay</div>;
   }
 }
 
